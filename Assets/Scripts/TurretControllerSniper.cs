@@ -8,6 +8,8 @@ public class TurretControllerSniper : MonoBehaviour
     public float turretViewHeight;
     public float shootTimer;
     public float rotationOffset;
+    
+    
 
     private Transform playerPos;
     private GameObject player;
@@ -18,15 +20,20 @@ public class TurretControllerSniper : MonoBehaviour
     private float playerHeight_Offset = 4f;
     private bool isShooting;
     private float currentShootingTimer;
+    
+    
+    
+
+   
 
     void Start() {
         player = GameObject.Find("PlayerObject");
         playerPos = player.transform;
         playerHeight = player.GetComponent<PlayerController>().playerHeight;
-
         lineRender = GetComponent<LineRenderer>();
         gunTip = GameObject.Find("Gun Tip").transform;
         currentShootingTimer = shootTimer;
+        
     }
 
     void Update(){  
@@ -80,5 +87,7 @@ public class TurretControllerSniper : MonoBehaviour
         }
         
     }
+    
+   
 
 }

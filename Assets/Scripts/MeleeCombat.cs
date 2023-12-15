@@ -9,6 +9,9 @@ public class MeleeCombat : MonoBehaviour
     public float attackRange = 0.5f;
     public LayerMask enemyLayers;
 
+    public AudioSource AudioSource;
+    public AudioClip killclip;
+
     // Update is called once per frame
     void Update()
     {
@@ -25,6 +28,7 @@ public class MeleeCombat : MonoBehaviour
 
         foreach(Collider enemy in hitEnemies)
         {
+            AudioSource.PlayClipAtPoint(killclip, enemy.gameObject.transform.position);
             Debug.Log("Hit");
             Destroy(enemy.gameObject);
         }
