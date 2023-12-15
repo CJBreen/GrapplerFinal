@@ -1,26 +1,11 @@
 fileFormatVersion: 2
-guid: f1592e1334236574b820e51fda3ae9e0
+guid: 8086b1a180c0fa64ea5a27665e5f986e
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
   - first:
-      74: -3100369314251171874
-    second: Idle
-  - first:
-      74: 94039530053899797
-    second: left_turn
-  - first:
-      74: 762034492026122189
-    second: Turret_Armature|Action
-  - first:
-      74: -9005092437012523653
-    second: Turret_Armature|Idle
-  - first:
-      74: 4116404104660515337
-    second: Turret_Armature|left_turn
-  - first:
-      74: -8841988690090681227
-    second: Turret_Armature|Turret_ArmatureAction
+      74: -203655887218126122
+    second: mixamo.com
   externalObjects: {}
   materials:
     materialImportMode: 2

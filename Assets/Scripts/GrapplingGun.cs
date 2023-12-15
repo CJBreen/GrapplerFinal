@@ -16,6 +16,11 @@ public class GrapplingGun : MonoBehaviour
     public AudioClip grappleSound;
     public AudioSource speaker;
 
+    public GrapplingGun(AudioSource speaker)
+    {
+        this.speaker = speaker;
+    }
+
     // Awake method
     void Awake() {
         lineRender = GetComponent<LineRenderer>(); // Renders the line for the grapple animation
@@ -46,10 +51,12 @@ public class GrapplingGun : MonoBehaviour
     void StartGrapple()
     {
         RaycastHit hit;
-        
-        
+
+        //speaker.enabled = true;
+
         if (Physics.Raycast(camera.position, camera.forward, out hit, maxDistance, whatIsGrappleable)) // If the player can grapple
         {
+            //speaker.PlayOneShot(grappleSound, 3f);
             grapplePoint = hit.point; // Sets grapple point to where the user hits
             joint = player.gameObject.AddComponent<SpringJoint>(); // Creates spring point between player and grapple location
             joint.autoConfigureConnectedAnchor = false; // Sets an anchor
