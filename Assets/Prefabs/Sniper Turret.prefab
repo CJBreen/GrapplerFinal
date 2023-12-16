@@ -518,6 +518,8 @@ MonoBehaviour:
   turretViewHeight: 0.5
   shootTimer: 5
   rotationOffset: 90
+  audioSource: {fileID: 0}
+  killClip: {fileID: 8300000, guid: 9002f976396778e40b021a5d3c3ea96b, type: 3}
 --- !u!65 &8018884741799505565
 BoxCollider:
   m_ObjectHideFlags: 0
