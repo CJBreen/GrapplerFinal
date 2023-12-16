@@ -12,7 +12,6 @@ public class GUI : MonoBehaviour
     private Canvas hudMenu;
 
     public bool isEsc;
-    private bool allowGuiActivate = true;
 
     void Start()
     {

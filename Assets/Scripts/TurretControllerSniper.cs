@@ -21,6 +21,9 @@ public class TurretControllerSniper : MonoBehaviour
     private bool isShooting;
     private float currentShootingTimer;
     
+    deathScreen deathScreen;
+    
+    
     
     
 
@@ -31,6 +34,7 @@ public class TurretControllerSniper : MonoBehaviour
         playerPos = player.transform;
         playerHeight = player.GetComponent<PlayerController>().playerHeight;
         lineRender = GetComponent<LineRenderer>();
+        deathScreen = GameObject.Find("DeathScreen").GetComponent<deathScreen>();
         gunTip = GameObject.Find("Gun Tip").transform;
         currentShootingTimer = shootTimer;
         
@@ -38,6 +42,14 @@ public class TurretControllerSniper : MonoBehaviour
 
     void Update(){  
     }
+
+    public void killPlayer()
+    {
+        deathScreen.playerDeath();
+    }
+
+
+
 
     void FixedUpdate() {
         seePlayer();
@@ -58,6 +70,8 @@ public class TurretControllerSniper : MonoBehaviour
             currentShootingTimer = shootTimer;
         }
     }
+
+  
     private void lookAtPlayer() {
         if (isSeePlayer) {
             Vector3 turretRotation = playerPos.position - transform.position;
@@ -83,6 +97,7 @@ public class TurretControllerSniper : MonoBehaviour
         }
         else {
             // Function to "kill" player will go here
+            killPlayer();
             Debug.Log("You are ded");
         }
         

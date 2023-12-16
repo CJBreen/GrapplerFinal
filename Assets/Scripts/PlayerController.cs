@@ -49,6 +49,7 @@ public class PlayerController : MonoBehaviour
 
         playerRb = GetComponent<Rigidbody>();
         PauseMenu pausemenu = GameObject.Find("PauseMenu").GetComponent<PauseMenu>();
+        deathScreen _deathScreen = GameObject.Find("DeathScreen").GetComponent<deathScreen>();
         cameraTransform = GameObject.Find("Main Camera").transform;
         Camera.main.fieldOfView = fieldOfView;
 
@@ -64,6 +65,15 @@ public class PlayerController : MonoBehaviour
             rotatePlayer();
             // Camera rotation
             cameraController();
+        }
+
+        if (deathScreen.isDead)
+        {
+            //player rot
+            rotatePlayer();
+            //camera rot
+            cameraController();
+            
         }
     }
 
