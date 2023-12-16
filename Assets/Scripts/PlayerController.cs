@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     public float forwardSpeed;
     public float strafeSpeed;
     public float maxSpeed;
+    public float maxAirSpeed;
     [Range(1, 3)]
     public float decelerationMultiplier = 2f;
     public float jumpPower;
@@ -135,9 +136,12 @@ public class PlayerController : MonoBehaviour
         Vector3 playerVelocity = new Vector3(playerRb.velocity.x, 0f, playerRb.velocity.z);
 
         if (playerVelocity.magnitude > maxSpeed && isOnGround) {
-            Vector3 fixedVelocity = playerVelocity.normalized * maxSpeed;
-            fixedVelocity.y = playerRb.velocity.y;
-            playerRb.velocity = fixedVelocity;
+            Vector3 newPlayerVelocity = playerRb.velocity/2;
+            playerRb.velocity = newPlayerVelocity;
+        } else if (playerVelocity.magnitude > maxAirSpeed && !isOnGround) {
+            Vector3 newPlayerVelocity = playerRb.velocity/1.2f;
+            newPlayerVelocity.y = playerRb.velocity.y;
+            playerRb.velocity = newPlayerVelocity;
         }
     }
     private void Jump() {

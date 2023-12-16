@@ -68,7 +68,7 @@ public class GrapplingGun : MonoBehaviour
             joint.minDistance = distanceFromPoint * 0.1f; // Maximum distance player will be kept from grapple point
 
             // These can be adjusted very easily to change the way the grappling gun works
-            joint.spring = 5f; // Spring
+            joint.spring = 10f; // Spring
             joint.damper = 5f; // Damper
             joint.massScale = 10f; // Mass
 
