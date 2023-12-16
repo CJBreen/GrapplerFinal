@@ -14,6 +14,9 @@ public class TurretControllerRocket : MonoBehaviour
     private bool isSeePlayer;
     private Transform gunTipLoc;
 
+    public AudioSource audioSource;
+    public AudioClip killClip;
+
     // Start is called before the first frame update
     void Start()
     {

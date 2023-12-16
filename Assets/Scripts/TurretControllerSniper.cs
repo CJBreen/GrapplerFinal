@@ -20,6 +20,9 @@ public class TurretControllerSniper : MonoBehaviour
     private float playerHeight_Offset = 4f;
     private bool isShooting;
     private float currentShootingTimer;
+
+    public AudioSource audioSource;
+    public AudioClip killClip;
     
     deathScreen deathScreen;
     
@@ -97,6 +100,7 @@ public class TurretControllerSniper : MonoBehaviour
         }
         else {
             // Function to "kill" player will go here
+            AudioSource.PlayClipAtPoint(killClip, player.transform.position);
             killPlayer();
             Debug.Log("You are ded");
         }

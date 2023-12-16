@@ -13,6 +13,8 @@ public class SpawnManager : MonoBehaviour
 
     public GameObject[] enemies;
     private GameObject[] numOfEnemies;
+    private int spawnPos;
+    public AudioClip spawnClip;
 
 
     // Start is called before the first frame update
@@ -30,10 +32,13 @@ public class SpawnManager : MonoBehaviour
         numOfEnemies = GameObject.FindGameObjectsWithTag("Enemy");
         Debug.Log("Number of enemies"+numOfEnemies.Length);
         if (numOfEnemies.Length == 0) {
+            spawnPos = Random.Range(0, spawnLocations.Length);
             Instantiate(enemies[Random.Range(0, enemies.Length)],
-            spawnLocations[Random.Range(0, spawnLocations.Length)],
+            spawnLocations[spawnPos],
             new Quaternion(0 ,0, 0, 0)
             );
+            AudioSource.PlayClipAtPoint(spawnClip, spawnLocations[spawnPos]);
+            
         }
     }
 }

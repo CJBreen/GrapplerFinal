@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -15,6 +16,7 @@ public class deathScreen : MonoBehaviour
         
     }
     
+
 
     public void notDead()
     {

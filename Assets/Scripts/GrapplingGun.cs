@@ -19,6 +19,7 @@ public class GrapplingGun : MonoBehaviour
     public GrapplingGun(AudioSource speaker)
     {
         this.speaker = speaker;
+        speaker.volume = 0.5f;
     }
 
     // Awake method
