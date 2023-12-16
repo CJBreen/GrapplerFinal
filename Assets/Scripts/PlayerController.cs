@@ -58,6 +58,7 @@ public class PlayerController : MonoBehaviour
         playerRb.mass = 0.1f;
         playerRb.drag = 0;
         playerRb.freezeRotation = true;
+        Physics.gravity = Vector3.down * 50;
     }
 
     void Update() {
@@ -88,8 +89,6 @@ public class PlayerController : MonoBehaviour
             playerSpeed();
             // The player's jump
             Jump();
-            // The player's gravity
-            playerGravity();
         }
         
     }
@@ -155,21 +154,5 @@ public class PlayerController : MonoBehaviour
     }
     private void jumpReset() {
         isJump = false;
-    }
-    // A custom "Gravity" implementation since the alternative is garb
-    private void playerGravity() {
-        Vector3 newPlayerVerticalSpeed = playerRb.velocity; // Getting initial player velocity
-
-        // Checking if the player is not on the ground and they are falling (aka in the air and falling)
-        if (!isOnGround && Mathf.Sign(playerRb.velocity.y) == -1) {
-            // increasing the rate the player is falling
-            newPlayerVerticalSpeed.y = playerRb.velocity.y - playerNegativeGravity;
-        }
-        else {
-            // increasing the rate the player is falling under normal conditions, aka either jumping or stationary
-            newPlayerVerticalSpeed.y = playerRb.velocity.y - playerNormalGravity;
-        }
-        // setting the player's new velocity that is generated above
-        playerRb.velocity = newPlayerVerticalSpeed;
     }
 }
