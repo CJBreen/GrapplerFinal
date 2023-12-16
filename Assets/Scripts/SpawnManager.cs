@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    private Vector3[] spawnLocations = {new Vector3(10f,-3f,-7.5f),
-                                        new Vector3(-33f, -3f, -7.5f),
-                                        new Vector3(-56f, -3f, 55.5f),
-                                        new Vector3(-114f, -3f, 22f),
-                                        new Vector3(-140f, -3f, -2f)
+    private Vector3[] spawnLocations = {new Vector3(177f, 0f,-165f),
+                                        new Vector3(129f, 0f, -143f),
+                                        new Vector3(45f, 0f, -34f),
+                                        new Vector3(94f, 0f, -91f),
+                                        new Vector3(9f, 0f, -160f)
                                         };
 
     public GameObject[] enemies;

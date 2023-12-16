@@ -123,7 +123,8 @@ public class PlayerController : MonoBehaviour
     }
     private void playerSpeed() {
         Vector3 playerVelocity = new Vector3(playerRb.velocity.x, 0f, playerRb.velocity.z);
-        if (playerVelocity.magnitude > maxSpeed) {
+
+        if (playerVelocity.magnitude > maxSpeed && isOnGround) {
             Vector3 fixedVelocity = playerVelocity.normalized * maxSpeed;
             fixedVelocity.y = playerRb.velocity.y;
             playerRb.velocity = fixedVelocity;

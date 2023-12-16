@@ -12,12 +12,14 @@ public class TurretControllerRocket : MonoBehaviour
     private Transform playerPos;
     private bool missileInAir;
     private bool isSeePlayer;
+    private Transform gunTipLoc;
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.Find("PlayerObject");
         playerPos = player.transform;
+        gunTipLoc = GameObject.Find("Rocket Turret Gun Tip").transform;
     }
 
     // Update is called once per frame
@@ -41,7 +43,7 @@ public class TurretControllerRocket : MonoBehaviour
         }
     }
     private void shoot() {
-        Instantiate(missile, transform.position, transform.rotation);
+        Instantiate(missile, gunTipLoc.position, gunTipLoc.rotation);
     }
 
 }
