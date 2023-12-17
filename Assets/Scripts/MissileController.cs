@@ -58,7 +58,7 @@ public class MissileController : MonoBehaviour
         } else if (other.gameObject.tag == "Player") {
             flameTrail.Stop();
             explosion.Play();
-            Invoke("killPlayer", explosion.main.duration/1000);
+            Invoke("killPlayer", explosion.main.duration/100);
             Destroy(this.gameObject, explosion.main.duration);
         }
     }
