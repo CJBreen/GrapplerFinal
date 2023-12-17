@@ -15,6 +15,7 @@ public class GrapplingGun : MonoBehaviour
     public static bool gamePaused = false;
     public AudioClip grappleSound;
     public AudioSource speaker;
+    public ParticleSystem particleSystem;
 
     public GrapplingGun(AudioSource speaker)
     {
@@ -59,6 +60,7 @@ public class GrapplingGun : MonoBehaviour
         {
             speaker.PlayOneShot(grappleSound, 3f);
             grapplePoint = hit.point; // Sets grapple point to where the user hits
+            particleSystem.Play(); //make the particle effect
             joint = player.gameObject.AddComponent<SpringJoint>(); // Creates spring point between player and grapple location
             joint.autoConfigureConnectedAnchor = false; // Sets an anchor
             joint.connectedAnchor = grapplePoint; // Sets anchor to grapple point

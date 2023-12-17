@@ -1,11 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
 
+    //using SceneManager for the methods
     public void PlayGame()
     {
         SceneManager.LoadScene("Arena");

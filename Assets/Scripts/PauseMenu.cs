@@ -1,26 +1,28 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
-
+    
+    //checking if paused
     public static bool isPaused;
 
+    //referencing UI elements
     public GameObject pauseUI;
     public GameObject HUD;
 
 
     private void Start()
     {
+        //automatically having the game in a "resumed" state
         resumeGame();
     }
 
 
     void Update()
     {
+        
+        //if player presses pause key, check if paused, if not, pause the game
         if (Input.GetKeyDown(KeyCode.Q))
         {
             if (isPaused)
@@ -34,7 +36,9 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
-    public void resumeGame()
+    
+    //method for resuming the game
+    private void resumeGame()
     {
         pauseUI.SetActive(false);
         HUD.SetActive(true);
@@ -44,7 +48,8 @@ public class PauseMenu : MonoBehaviour
         isPaused = false;
     }
 
-    public void pauseGame()
+    //method for pausing the game
+    private void pauseGame()
     {
         pauseUI.SetActive(true);
         HUD.SetActive(false);

@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -12,12 +11,16 @@ public class deathScreen : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
+        //automatically hiding death screen
         deathUI.SetActive(false);
         
     }
     
 
 
+    
+    //when the player isn't dead
     public void notDead()
     {
         deathUI.SetActive(false);
@@ -28,6 +31,8 @@ public class deathScreen : MonoBehaviour
         isDead = false;
     }
 
+    
+    //when player dies
     public void playerDeath()
     {
         deathUI.SetActive(true);
@@ -38,7 +43,7 @@ public class deathScreen : MonoBehaviour
         isDead = true;
     }
     
-    
+    //functions to go to main menu and to restart
     public void returntoMain()
     {
         SceneManager.LoadScene("MainMenu");

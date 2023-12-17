@@ -49,8 +49,6 @@ public class PlayerController : MonoBehaviour
         Cursor.visible = false;
 
         playerRb = GetComponent<Rigidbody>();
-        PauseMenu pausemenu = GameObject.Find("PauseMenu").GetComponent<PauseMenu>();
-        deathScreen _deathScreen = GameObject.Find("DeathScreen").GetComponent<deathScreen>();
         cameraTransform = GameObject.Find("Main Camera").transform;
         Camera.main.fieldOfView = fieldOfView;
 
