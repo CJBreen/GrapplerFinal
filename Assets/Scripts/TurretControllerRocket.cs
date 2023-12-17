@@ -26,7 +26,7 @@ public class TurretControllerRocket : MonoBehaviour
         player = GameObject.Find("PlayerObject");
         playerPos = player.transform;
         // Getting the turrets gun tip position & rotation
-        gunTipLoc = GameObject.Find("Rocket Turret Gun Tip").transform;
+        // gunTipLoc = GameObject.Find("Rocket Turret Gun Tip").transform;
         // Gives a 5s cooldown before the turret can shoot so it cant just shoot you in the face when you go to punch it
         Invoke("allowShoot", 5f);
     }
@@ -40,8 +40,8 @@ public class TurretControllerRocket : MonoBehaviour
     private void seePlayer() {
         // Creates a line between the turret and the player which is blocked by any walls, if the line hits the player, returns true
         isSeePlayer = !(Physics.Linecast(transform.position, playerPos.position, wallsDef));
-        // If the turret can see the player, doesnt have a missile in the air and the shoot cooldown is over, shoot
-        if (isSeePlayer && GameObject.Find("Missile(Clone)") == null && canShoot) {
+        // If the turret can see the player and the shoot cooldown is over, shoot
+        if (isSeePlayer && canShoot) {
             shoot();
         }
     }
@@ -57,7 +57,7 @@ public class TurretControllerRocket : MonoBehaviour
     }
     private void shoot() {
         // Creates a missile at the guntip's location and with the guntip's rotation
-        Instantiate(missile, gunTipLoc.position, gunTipLoc.rotation);
+        Instantiate(missile, transform.position+(Vector3.up*3), transform.rotation);
         // Cooldown to prevent the turret from firing too rapidly
         canShoot = false;
         Invoke("allowShoot", shootCooldown);

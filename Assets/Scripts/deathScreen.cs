@@ -14,11 +14,9 @@ public class deathScreen : MonoBehaviour
         
         //automatically hiding death screen
         deathUI.SetActive(false);
+        notDead();
         
     }
-    
-
-
     
     //when the player isn't dead
     public void notDead()

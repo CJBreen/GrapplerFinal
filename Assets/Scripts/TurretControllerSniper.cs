@@ -16,7 +16,7 @@ public class TurretControllerSniper : MonoBehaviour
     private bool isSeePlayer;
     private Transform gunTip;
     private float playerHeight;
-    private float playerHeight_Offset = 4f;
+    private float playerHeight_Offset = 2f;
     private bool isShooting;
     private float currentShootingTimer;
 
@@ -36,7 +36,7 @@ public class TurretControllerSniper : MonoBehaviour
         // Getting the death screen
         deathScreen = GameObject.Find("DeathScreen").GetComponent<deathScreen>();
         // Getting the position and rotation of the gun tip, which is just the very end of the gun
-        gunTip = GameObject.Find("Gun Tip").transform;
+        // gunTip = GameObject.Find("Gun Tip").transform;
         // Setting the countdown timer to what is stored in the public variable (the variable is counted down before the gun is fired)
         currentShootingTimer = shootTimer;
         // Stops the shooting effect from playing
@@ -93,7 +93,7 @@ public class TurretControllerSniper : MonoBehaviour
         // If the turret can see the player, draw a line to them
         if (isSeePlayer) {
             lineRender.positionCount = 2;
-            lineRender.SetPosition(0, gunTip.position); // First point of the line
+            lineRender.SetPosition(0, transform.position+(Vector3.up*3)); // First point of the line
             // We want the laser to be aimed at the players feet, not in their face so we offset the height
             lineRender.SetPosition(1, playerPos.position - Vector3.up * (playerHeight-playerHeight_Offset));    // Second point of the line
         }
