@@ -10,8 +10,6 @@ public class TurretControllerSniper : MonoBehaviour
     public float rotationOffset;
     public ParticleSystem firingSFX;
     
-    
-
     private Transform playerPos;
     private GameObject player;
     private LineRenderer lineRender;
@@ -27,12 +25,6 @@ public class TurretControllerSniper : MonoBehaviour
     
     deathScreen deathScreen;
     
-    
-    
-    
-
-   
-
     void Start() {
         player = GameObject.Find("PlayerObject");
         playerPos = player.transform;
@@ -53,9 +45,6 @@ public class TurretControllerSniper : MonoBehaviour
         AudioSource.PlayClipAtPoint(killClip, player.transform.position);
         deathScreen.playerDeath();
     }
-
-
-
 
     void FixedUpdate() {
         seePlayer();
