@@ -16,7 +16,7 @@ public class TurretControllerSniper : MonoBehaviour
     private bool isSeePlayer;
     private Transform gunTip;
     private float playerHeight;
-    private float playerHeight_Offset = 2f;
+    private float playerHeight_Offset = 1f;
     private bool isShooting;
     private float currentShootingTimer;
 

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class MeleeCombat : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class MeleeCombat : MonoBehaviour
     public AudioSource AudioSource;
     public AudioClip punchclip;
     public AudioClip killclip;
+    private TextMeshProUGUI killCounter;
+    private int kills = 0;
 
     // Update is called once per frame
     void Update()
@@ -21,7 +24,9 @@ public class MeleeCombat : MonoBehaviour
             Melee();
         }
     }
-
+    void Start() {
+        killCounter = GameObject.Find("Killcounter").GetComponent<TextMeshProUGUI>();
+    }
     void Melee()
     {
 
@@ -31,6 +36,8 @@ public class MeleeCombat : MonoBehaviour
         {
             AudioSource.PlayClipAtPoint(punchclip, enemy.gameObject.transform.position);
             AudioSource.PlayClipAtPoint(killclip, enemy.gameObject.transform.position);
+            kills ++;
+            killCounter.text = "Enemies killed: "+kills;
             Destroy(enemy.gameObject);
         }
     }
