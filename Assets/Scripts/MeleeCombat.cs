@@ -29,7 +29,6 @@ public class MeleeCombat : MonoBehaviour
         foreach(Collider enemy in hitEnemies)
         {
             AudioSource.PlayClipAtPoint(killclip, enemy.gameObject.transform.position);
-            Debug.Log("Hit");
             Destroy(enemy.gameObject);
         }
     }

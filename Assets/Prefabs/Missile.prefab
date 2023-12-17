@@ -57,8 +57,8 @@ MonoBehaviour:
     m_Bits: 64
   maxDistance: 200
   explosion: {fileID: 198917022815763922}
-  smokeTrail: {fileID: 0}
   flameTrail: {fileID: 2606403844020025148}
+  killClip: {fileID: 8300000, guid: 9002f976396778e40b021a5d3c3ea96b, type: 3}
 --- !u!54 &5542315576583326487
 Rigidbody:
   m_ObjectHideFlags: 0
