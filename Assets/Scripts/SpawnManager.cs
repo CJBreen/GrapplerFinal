@@ -28,7 +28,8 @@ public class SpawnManager : MonoBehaviour
     {
         
     }
-    void FixedUpdate() {
+    void FixedUpdate()
+    {
         numOfEnemies = GameObject.FindGameObjectsWithTag("Enemy");
         if (numOfEnemies.Length == 0) {
             spawnPos = Random.Range(0, spawnLocations.Length);

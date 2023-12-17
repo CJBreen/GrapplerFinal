@@ -102,7 +102,6 @@ public class TurretControllerSniper : MonoBehaviour
             // Function to "kill" player will go here
             AudioSource.PlayClipAtPoint(killClip, player.transform.position);
             killPlayer();
-            Debug.Log("You are ded");
         }
         
     }

@@ -18,9 +18,8 @@ public class animController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F))
         {
-            animator.enabled = false;
-            animator.enabled = true;
-            animator.Play("punch");
+   
+            animator.Play("punch", -1,0);
             
             
         }

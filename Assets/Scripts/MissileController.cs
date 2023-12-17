@@ -18,6 +18,7 @@ public class MissileController : MonoBehaviour
     private Quaternion playerTracking;
 
     deathScreen deathScreen;
+    public AudioClip killClip;
 
     // Start is called before the first frame update
     void Start()
@@ -58,6 +59,7 @@ public class MissileController : MonoBehaviour
         } else if (other.gameObject.tag == "Player") {
             flameTrail.Stop();
             explosion.Play();
+            AudioSource.PlayClipAtPoint(killClip, player.transform.position);
             Invoke("killPlayer", explosion.main.duration/100);
             Destroy(this.gameObject, explosion.main.duration);
         }
