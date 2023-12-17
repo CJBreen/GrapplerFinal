@@ -17,10 +17,10 @@ public class GUI : MonoBehaviour
 
     void Start()
     {
+        playerRb = GameObject.Find("PlayerObject").GetComponent<Rigidbody>();
         playerSpeed = GameObject.Find("PlayerSpeed").GetComponent<TextMeshProUGUI>();
         hudMenu = GameObject.Find("HUD").GetComponent<Canvas>();
         enemiesRemaining = GameObject.Find("Enemies").GetComponent<TextMeshProUGUI>();
-        playerRb = GameObject.Find("PlayerObject").GetComponent<Rigidbody>();
     }
 
     void Update()

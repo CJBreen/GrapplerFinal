@@ -12,14 +12,19 @@ public class MissileController : MonoBehaviour
     private Transform playerPos;
     private GameObject player;
     private Rigidbody missileRB;
+    private Rigidbody playerRb;
     private Quaternion playerTracking;
+
+    deathScreen deathScreen;
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.Find("PlayerObject");
+        playerRb = player.GetComponent<Rigidbody>();
         playerPos = player.transform; 
         missileRB = GetComponent<Rigidbody>();
+        deathScreen = GameObject.Find("DeathScreen").GetComponent<deathScreen>();
     }
 
     // Update is called once per frame
@@ -46,6 +51,8 @@ public class MissileController : MonoBehaviour
     private void OnTriggerEnter(Collider other) {
         if ((wallsDef.value & (1 << other.transform.gameObject.layer)) > 0) {
             Destroy(this.gameObject);
+        } else if (other.gameObject.tag == "Player") {
+            deathScreen.playerDeath();
         }
     }
 }
