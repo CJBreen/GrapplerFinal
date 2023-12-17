@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class animController : MonoBehaviour
@@ -18,11 +16,12 @@ public class animController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F))
         {
-   
-            animator.Play("punch", -1,0);
-            
-            
+            animator.Play("punch");
+
         }
         
     }
+
+   
+    
 }
