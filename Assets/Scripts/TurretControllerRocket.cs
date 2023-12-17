@@ -7,12 +7,14 @@ public class TurretControllerRocket : MonoBehaviour
     public LayerMask wallsDef;
     public float rotationOffset;
     public Rigidbody missile;
+    public float shootCooldown = 5f;
 
     private GameObject player;
     private Transform playerPos;
     private bool missileInAir;
     private bool isSeePlayer;
     private Transform gunTipLoc;
+    private bool canShoot;
 
     public AudioSource audioSource;
     public AudioClip killClip;
@@ -23,6 +25,7 @@ public class TurretControllerRocket : MonoBehaviour
         player = GameObject.Find("PlayerObject");
         playerPos = player.transform;
         gunTipLoc = GameObject.Find("Rocket Turret Gun Tip").transform;
+        Invoke("allowShoot", 5f);
     }
 
     // Update is called once per frame
@@ -33,7 +36,7 @@ public class TurretControllerRocket : MonoBehaviour
     }
     private void seePlayer() {
         isSeePlayer = !(Physics.Linecast(transform.position, playerPos.position, wallsDef));
-        if (isSeePlayer && GameObject.Find("Missile(Clone)") == null) {
+        if (isSeePlayer && GameObject.Find("Missile(Clone)") == null && canShoot) {
             shoot();
         }
     }
@@ -47,6 +50,11 @@ public class TurretControllerRocket : MonoBehaviour
     }
     private void shoot() {
         Instantiate(missile, gunTipLoc.position, gunTipLoc.rotation);
+        canShoot = false;
+        Invoke("allowShoot", shootCooldown);
+    }
+    private void allowShoot() {
+        canShoot = true;
     }
 
 }

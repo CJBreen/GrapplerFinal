@@ -30,7 +30,6 @@ public class SpawnManager : MonoBehaviour
     }
     void FixedUpdate() {
         numOfEnemies = GameObject.FindGameObjectsWithTag("Enemy");
-        Debug.Log("Number of enemies"+numOfEnemies.Length);
         if (numOfEnemies.Length == 0) {
             spawnPos = Random.Range(0, spawnLocations.Length);
             Instantiate(enemies[Random.Range(0, enemies.Length)],

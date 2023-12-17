@@ -231,6 +231,9 @@ MonoBehaviour:
     m_Bits: 64
   rotationOffset: 90
   missile: {fileID: 5542315576583326487, guid: 9e418e5a1f9d990429762d4faed8819e, type: 3}
+  shootCooldown: 5
+  audioSource: {fileID: 0}
+  killClip: {fileID: 0}
 --- !u!1 &703024759332457672
 GameObject:
   m_ObjectHideFlags: 0
