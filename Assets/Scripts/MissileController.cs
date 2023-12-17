@@ -8,6 +8,7 @@ public class MissileController : MonoBehaviour
     public float acceleration = 1f;
     public LayerMask wallsDef;
     public float maxDistance = 200f;
+    public ParticleSystem explosion;
 
     private Transform playerPos;
     private GameObject player;
@@ -20,6 +21,7 @@ public class MissileController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        explosion.Pause();
         player = GameObject.Find("PlayerObject");
         playerRb = player.GetComponent<Rigidbody>();
         playerPos = player.transform; 
@@ -52,7 +54,12 @@ public class MissileController : MonoBehaviour
         if ((wallsDef.value & (1 << other.transform.gameObject.layer)) > 0) {
             Destroy(this.gameObject);
         } else if (other.gameObject.tag == "Player") {
-            deathScreen.playerDeath();
+            explosion.Play();
+            Invoke("killPlayer", explosion.main.duration/1000);
+            Destroy(this.gameObject, explosion.main.duration);
         }
+    }
+    private void killPlayer() {
+        deathScreen.playerDeath();
     }
 }
