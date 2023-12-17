@@ -48,8 +48,11 @@ public class PlayerController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
+        // Getting the player's rigidbody
         playerRb = GetComponent<Rigidbody>();
+        // Getting the camera's rotation and position
         cameraTransform = GameObject.Find("Main Camera").transform;
+        // Setting the camera's field of view to the value set in the fieldofview variable
         Camera.main.fieldOfView = fieldOfView;
 
         // Setting Rigidbody settings
@@ -60,20 +63,11 @@ public class PlayerController : MonoBehaviour
     }
 
     void Update() {
-        if (!PauseMenu.isPaused) {
+        if (!PauseMenu.isPaused && !deathScreen.isDead) {
             // Player rotation
             rotatePlayer();
             // Camera rotation
             cameraController();
-        }
-
-        if (deathScreen.isDead)
-        {
-            //player rot
-            rotatePlayer();
-            //camera rot
-            cameraController();
-            
         }
     }
 
@@ -115,8 +109,6 @@ public class PlayerController : MonoBehaviour
         float mouse_Y = Input.GetAxis("Mouse Y") * Time.fixedDeltaTime * mouseSens_Y;
 
         rotation_X += mouse_X;
-
-        // Used in the CameraController method
         rotation_Y -= mouse_Y;  // Change this to a += instead to inverse mouse controls
         rotation_Y = Mathf.Clamp(rotation_Y, -90f, 90f);    // Making it so that the player cant look more than 90 degrees up and down
 
@@ -130,14 +122,18 @@ public class PlayerController : MonoBehaviour
         cameraTransform.rotation = Quaternion.Euler(rotation_Y, rotation_X, 0);
     }
     private void playerSpeed() {
+        // Creating a new Vector3 with the player's velocity in all directions except the "Y axis" otherwise the speed limit would be applied while jumping
         Vector3 playerVelocity = new Vector3(playerRb.velocity.x, 0f, playerRb.velocity.z);
 
+        // Checking if the total of the player's velocity is higher than the max speed and if the player is on the ground, if true then slow player down
         if (playerVelocity.magnitude > maxSpeed && isOnGround) {
             Vector3 newPlayerVelocity = playerRb.velocity/2;
             playerRb.velocity = newPlayerVelocity;
-        } else if (playerVelocity.magnitude > maxAirSpeed && !isOnGround) {
+        } 
+        // Check if the total of the player's velocity is higher than the max airspeed and the player is in the air, if true slow player down
+        else if (playerVelocity.magnitude > maxAirSpeed && !isOnGround) {
             Vector3 newPlayerVelocity = playerRb.velocity/1.2f;
-            newPlayerVelocity.y = playerRb.velocity.y;
+            newPlayerVelocity.y = playerRb.velocity.y;  // Keeping the Y velocity of the player the same otherwise gravity wouldnt work
             playerRb.velocity = newPlayerVelocity;
         }
     }
@@ -150,6 +146,7 @@ public class PlayerController : MonoBehaviour
             Invoke("jumpReset", jumpCooldown);  // invoking the method to reset the jump with a delay of jumpCooldown
         }
     }
+    // Method used to reset the jump boolean that allows the player to jump again
     private void jumpReset() {
         isJump = false;
     }
