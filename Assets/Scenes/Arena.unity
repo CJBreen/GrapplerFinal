@@ -4113,6 +4113,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   AudioSource: {fileID: 0}
+  punchclip: {fileID: 8300000, guid: f72d619cf4add72469a17af203591537, type: 3}
   killclip: {fileID: 8300000, guid: 2e2ef5efd0df0cb47a6f2d70783c7071, type: 3}
 --- !u!4 &1284287981 stripped
 Transform:
