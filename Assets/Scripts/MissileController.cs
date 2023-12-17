@@ -68,7 +68,6 @@ public class MissileController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) {
         // If the missile hits the walls or the floor, destroy it
-        Debug.Log(wallsDef.value);
         // Converting from layer to layermask and comparing against the int value of the layermask (1 << layer is a fancy way of converting the layer to the layermask and since other spits out the layer not the layermask, this is required...)
         if ((wallsDef.value & (1 << other.transform.gameObject.layer)) > 0) {
             Destroy(this.gameObject);
