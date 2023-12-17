@@ -9,6 +9,7 @@ public class MissileController : MonoBehaviour
     public LayerMask wallsDef;
     public float maxDistance = 200f;
     public ParticleSystem explosion;
+    public ParticleSystem flameTrail;
 
     private Transform playerPos;
     private GameObject player;
@@ -22,6 +23,7 @@ public class MissileController : MonoBehaviour
     void Start()
     {
         explosion.Pause();
+        flameTrail.Play();
         player = GameObject.Find("PlayerObject");
         playerRb = player.GetComponent<Rigidbody>();
         playerPos = player.transform; 
@@ -54,6 +56,7 @@ public class MissileController : MonoBehaviour
         if ((wallsDef.value & (1 << other.transform.gameObject.layer)) > 0) {
             Destroy(this.gameObject);
         } else if (other.gameObject.tag == "Player") {
+            flameTrail.Stop();
             explosion.Play();
             Invoke("killPlayer", explosion.main.duration/1000);
             Destroy(this.gameObject, explosion.main.duration);
